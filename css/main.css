@@ -1,0 +1,39 @@
+div#generator{float:left; width: 100%; margin-bottom:20px; font-size: 1.2em}
+	
+	div.field{float:left; margin-bottom:10px; width:100%;}
+		div.field label{float:left; margin-right:15px; width:30%; text-align: right; margin-top:5px;}
+		div.field input{float:left; font-size: 0.7em; width:20%;}
+		div.field select{float:left; font-size: 1em;}
+	div.actions{float:left; margin-left:25%;}
+		div.actions button{margin-left:90px; background-color: #eb4247; color: #ffffff; border: none; border-radius: 6px; padding:10px 20px; font-size: 1.1em}
+	
+	div#generated{float:left; margin-left:10%;width:80%; background-color: #f2f2f2; border: thin solid #ccc; border-radius:6px; padding:1% 2%; display: none}
+    div#error{float:left; margin-left:31%; width:33%; background-color: #F3B2BB; border: thin solid #ccc; border-radius:6px; padding:1% 2%; display: none}
+
+body {
+    font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif;
+}
+.colortext {
+     color: #eb4247; /* Красный цвет выделения */
+   }
+
+h1 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600px;
+    color: #101820;
+}
+
+h2 {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+}
+
+h3 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    color: #101820;
+}
