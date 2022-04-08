@@ -52,6 +52,8 @@ $(document).ready(function(){
 		$('div#error').fadeOut();
 		$('div#copytext').fadeOut();
 		$('div#succes_copy').html("");
+		$('select#medium').val('');
+		$('input#medium1').val('');
 	})
 
 	function check_paid(campaign){
