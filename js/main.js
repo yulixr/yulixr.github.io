@@ -4,10 +4,12 @@ $(document).ready(function(){
 	
 	populate_select($('#source'), options.source);
 	populate_select($('#medium'), options.medium);
+	populate_select($('#product'), options.product);
 	
 	$('button#generate').click(function(){
 		generate_code();
 	})
+
 
 	function populate_select(target, data){
 
@@ -48,6 +50,8 @@ $(document).ready(function(){
 		console.log('change is coming!')
 		$('div#generated').fadeOut();
 		$('div#error').fadeOut();
+		$('div#copytext').fadeOut();
+		$('div#succes_copy').html("");
 	})
 
 	function check_paid(campaign){
@@ -57,18 +61,61 @@ $(document).ready(function(){
 			$('div#error').fadeIn();
 			console.log("miss paid")
 		}
-
 	}
+	function check_date(campaign){
+		if (campaign.search(/\d/) == -1)
+		{
+			$('div#errormsg').html("💩 добавьте дату в название компании!!! 💩");
+			$('div#error').fadeIn();
+			console.log("miss date");
+			return 0;
+		}
+		else
+			return 1;
+	}
+
+	function smm_generator(url, medium, link_text){
+		url1 = url;
+		url = insert_utm(url, 'utm_medium', medium);
+		url = insert_utm(url, 'utm_source', 'vk.com' );
+		url += get_concatenator(url) + 'utm_campaign' + '=' + link_text +'\n</br>';
+		url += url1;
+		url = url +  '?' + 'utm_medium=' + medium;
+		url = insert_utm(url, 'utm_source', 'telegram' );
+		url += get_concatenator(url) + 'utm_campaign' + '=' + link_text +'\n</br>';
+		url += url1;
+		url = url +  '?' + 'utm_medium=' + medium;
+		url = insert_utm(url, 'utm_source', 'facebook.com' );
+		url += get_concatenator(url) + 'utm_campaign' + '=' + link_text +'\n</br>';
+		url += url1 ;
+		url = url +  '?' + 'utm_medium=' + medium;
+		url = insert_utm(url, 'utm_source', 'instagram' );
+		url += get_concatenator(url) + 'utm_campaign' + '=' + link_text +'\n</br>';
+		url += url1;
+		url = url +  '?' + 'utm_medium=' + medium;
+		url = insert_utm(url, 'utm_source', 'ok.ru' );
+		url += get_concatenator(url) + 'utm_campaign' + '=' + link_text +'\n</br>';
+		return url;
+	}
+
 	function generate_code(){
-		let url = $('select#protocol').val() + $('input#url').val() + '/';
-		let link_text = $('input#term').val();
+		let url = $('input#url').val() + '/';
+		let link_text = $('select#product').val() + "_" + $('input#term').val();
 
 		let source = $('select#source').val();
 		let medium = $('select#medium').val();
 		let medium1 = $('input#medium1').val();
 		let source1 = $('input#source1').val();
 		
-		if (source == "youtube.com" || source == "telegram")
+		if (medium == "social")
+		{
+			if(check_date(link_text))
+				url = smm_generator(url, medium, link_text);
+		}
+		
+		else{
+		if ((source == "youtube.com" && medium == "referral")|| (source == "telegram" && medium == "referral")
+			||(source == "habr.com" && medium == "banner"))
 			check_paid(link_text);
 
 		if (source == "" && source1 != "")
@@ -87,15 +134,35 @@ $(document).ready(function(){
 		
 		if (link_text == "")
 			console.log("no campaign");
-		else
+		else {
+			check_date(link_text);
 			url = url + get_concatenator(url) + 'utm_campaign' + '=' + link_text;
-		if ($('input#url').val() != ""){
-		$('div#code').html(url)
-		$('div#generated').fadeIn();}
+		}
 	}
-
+		if ($('input#url').val() != ""){
+			$('div#code').html(url);
+			$('div#generated').fadeIn();
+			$('button#copytext').fadeIn();
+			$('button#copytext').click(function(){
+				copy_text();
+				$('div#succes_copy').html("✅");
+			});
+		}
+	}
+	function copy_text() {
+    	var $tmp = $("<textarea>");
+    	$("body").append($tmp);
+    	$tmp.val($("div#code").text()).select();
+    	document.execCommand("copy");
+    	$tmp.remove();
+	}    
 function get_options(){
 	let options =  {
+		product: [
+				{value: "prod1", label: "prod1"},
+				{value: "prod2", label: "prod2"},
+				{value: "prod3", label: "prod3"}
+		],
 		source:  [
 				{value: "vk.com", label: "vk.com"},
 				{value: "facebook.com", label: "facebook.com"},
