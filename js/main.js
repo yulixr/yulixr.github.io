@@ -101,8 +101,10 @@ $(document).ready(function(){
 	function generate_code(){
 		let url = $('input#url').val() + '/';
 		let link_text ="";
-		if ($('select#product').val() != "")
+		if ($('select#product').val() != ""){
+			check_date($('input#term').val());
 			link_text = $('select#product').val() + "_" + $('input#term').val();
+		}
 		else
 			link_text = $('input#term').val();
 
