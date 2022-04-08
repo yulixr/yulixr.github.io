@@ -5,33 +5,29 @@
 <h1 align = "center">🧐 UTM generator 🧐</h1>
 <h3 align = "center" style = "margin-left: 10%; margin-right: 10%;"> <span class = "colortext">правило по utm_campaign: </span><br>
 продукт_название кампании_дата_(название канала для youtube.com и посевов telegram)_(paid если платный трафик)</h3>
-<h3 align = "center" style = "margin-left: 10%; margin-right: 10%;"> <a href = "https://confluence.selectel.org/pages/viewpage.action?pageId=74908333" style ="color: #0B4A77">Как правильно составить ссылку?</a></h3>
-
+<h3 align = "center" style = "margin-left: 10%; margin-right: 10%;"> <a href = "https://docs.google.com/document/d/1GZKsiPPlCFS6Fkpy97Su5n_MYLvp-Gbcc4aflmQpUZ8/edit" target="_blank" style ="color: #101820;">Как правильно составить ссылку?</a></h3>
+<h3 align = "center" style = "margin-left: 0%; margin-right: 10%;"> p.s medium social генерирует source автоматически</h3>
 <div id="generator">	
 	<div class="field">
 		<label for="url">URL</label>
-		<select name="protocol" id="protocol">
-			<option>http://</option>
-			<option>https://</option>
-		</select>
-		<input id="url" name="url">
+		<input id="url" name="url" style="width: 30.5%"></input>
 	</div>
-
 	<div class="field">
 		<label for="source">utm_source</label>
 		<select id="source" name="source"></select>
-		<input id="source1" name="source1">
+		<input id="source1" name="source1" style = "margin-left: 5px;"></input>
 	</div>
 
 	<div class="field">
 		<label for="medium">utm_medium</label>
 		<select id="medium" name="medium"></select>
-		<input id="medium1" name="medium1">
+		<input id="medium1" name="medium1" style = "margin-left: 5px;"></input>
 	</div>
 	
 	<div class="field">
 		<label for="term">utm_campaign</label>
-		<input id="term" name="term">
+		<select id="product" name="product"></select>
+		<input id="term" name="term" style = "margin-left: 5px;"></input>
 	</div>
 	<div id="error" style = "margin-bottom: 10px;">
 	<div id="errormsg"></div>
@@ -42,7 +38,9 @@
 	</div>
 </div>
 <div id="generated">
-	<div id="code"></div>
+	<div id="code" style ="display:inline-block;"></div>
+	<button id="copytext" style ="display:inline-block;">Copy link </button>
+	<div id="succes_copy" style = "float:right; margin-right: 5px; margin-top: 1px; font-size: 1.1em;"></div>
 </div>
 
 
