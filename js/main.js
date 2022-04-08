@@ -102,7 +102,11 @@ $(document).ready(function(){
 
 	function generate_code(){
 		let url = $('input#url').val() + '/';
-		let link_text = $('select#product').val() + "_" + $('input#term').val();
+		let link_text ="";
+		if ($('select#product').val() != "")
+			link_text = $('select#product').val() + "_" + $('input#term').val();
+		else
+			link_text = $('input#term').val();
 
 		let source = $('select#source').val();
 		let medium = $('select#medium').val();
@@ -169,9 +173,23 @@ $(document).ready(function(){
 function get_options(){
 	let options =  {
 		product: [
-				{value: "prod1", label: "prod1"},
-				{value: "prod2", label: "prod2"},
-				{value: "prod3", label: "prod3"}
+				{value: "dedicated", label: "dedicated"},
+				{value: "cloud", label: "cloud"},
+				{value: "uzbekistan", label: "uzbekistan"},
+				{value: "nl1", label: "nl1"},
+				{value: "cloud", label: "cloud"},
+				{value: "storage", label: "storage"},
+				{value: "cdn", label: "cdn"},
+				{value: "dbaas", label: "dbaas"},
+				{value: "kubernetes", label: "kubernetes"},
+				{value: "craas", label: "craas"},
+				{value: "file_storage", label: "file_storage"},
+				{value: "vmware", label: "vmware"},
+				{value: "draas", label: "draas"},
+				{value: "baas", label: "baas"},
+				{value: "security", label: "security"},
+				{value: "1c", label: "1c"},
+				{value: "lbaas", label: "lbaas"}
 		],
 		source:  [
 				{value: "vk.com", label: "vk.com"},
