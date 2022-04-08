@@ -112,11 +112,12 @@ $(document).ready(function(){
 			if(check_date(link_text))
 				url = smm_generator(url, medium, link_text);
 		}
-		
 		else{
+
 		if ((source == "youtube.com" && medium == "referral")|| (source == "telegram" && medium == "referral")
 			||(source == "habr.com" && medium == "banner"))
 			check_paid(link_text);
+
 
 		if (source == "" && source1 != "")
 			url = url + get_concatenator(url) + 'utm_source=' + source1;
@@ -124,13 +125,20 @@ $(document).ready(function(){
 			url = insert_utm(url, 'utm_source', source );
 		else
 			console.log("no source");
-
-		if (medium == "" && medium1 != "")
-			url = url + get_concatenator(url) + 'utm_medium=' + medium1;
-		else if (medium1 == "")
-			url = insert_utm(url, 'utm_medium', medium );
-		else
-			console.log("no medium");
+		if (source == "blog")
+		{
+			url = url + get_concatenator(url) + 'utm_medium=' + "innerreferral";
+			$('select#medium').val('innerreferral');
+			$('input#medium1').val('innerreferral');
+		}
+		else {
+			if (medium == "" && medium1 != "")
+				url = url + get_concatenator(url) + 'utm_medium=' + medium1;
+			else if (medium1 == "")
+				url = insert_utm(url, 'utm_medium', medium );
+			else
+				console.log("no medium");
+		}
 		
 		if (link_text == "")
 			console.log("no campaign");
