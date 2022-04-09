@@ -97,9 +97,15 @@ $(document).ready(function(){
 		url += get_concatenator(url) + 'utm_campaign' + '=' + link_text +'\n</br>';
 		return url;
 	}
+	function check_slash(){
+		if ($('input#url').val().endsWith("/"))
+			return $('input#url').val();
+		else
+			return $('input#url').val() + '/';
+		}
 
 	function generate_code(){
-		let url = $('input#url').val() + '/';
+		let url = check_slash();
 		let link_text ="";
 		if ($('select#product').val() != ""){
 			check_date($('input#term').val());
