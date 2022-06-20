@@ -3,7 +3,7 @@ div#generator{float:left; width: 100%; margin-bottom:20px; font-size: 1.2em}
 	div.field{float:left; margin-bottom:10px; width:100%;}
 		div.field label{float:left; margin-right:15px; width:30%; text-align: right; margin-top:3px;}
 		div.field input{float:left; font-size: 0.8em; width:22%;}
-		div.field select{float:left; font-size: 0.8em; width: 8%; margin-top: 1.5px;}
+		div.field select{float:left; font-size: 0.8em; width: 15%; margin-top: 1.5px;}
 	div.actions{float:left; margin-left:25%;}
 		div.actions button{margin-left:90px; background-color: #eb4247; color: #ffffff; border: none; border-radius: 6px; padding:10px 20px; font-size: 1.1em}
 	div button#copytext{float: right; width: 10%;}
