@@ -4,7 +4,7 @@ $(document).ready(function(){
         
         // select lists from the lists below
         populate_select($('#product'), options.product);
-
+        populate_select($('#source'), options.source);
         $('button#generate').click(function(){
             generate_code();
         })
@@ -72,16 +72,18 @@ $(document).ready(function(){
         
     
         function generate_code(){
-            let url = check_slash();
+            let url = "";
             let link_text ="";
             
             let source = $('select#source').val();
             let source1 = $('input#source1').val();
+            console.log(source)
             console.log(source1)
-            if (source1 != "")
-			    url = url + get_concatenator(url) + 'utm_campaign=' + source1;
-		    else if (source1 == "")
-			    url = insert_utm(url, 'utm_campaign', source );
+            if (source != "")
+                url += source;
+            else if (source1 != "")
+                url += source1;
+            
 
 
             var spisok = $('select#product').val();
@@ -161,32 +163,14 @@ $(document).ready(function(){
                     
             ],
             source:  [
-                    {value: "vk.com", label: "vk.com"},
-                    {value: "facebook.com", label: "facebook.com"},
-                    {value: "instagram", label: "instagram"},
-                    {value: "youtube.com", label: "youtube.com"},
-                    {value: "telegram", label: "telegram"},
-                    {value: "blog", label: "blog"},
-                    {value: "vc.ru", label: "vc.ru"},
-                    {value: "habr.com", label: "habr.com"},
-                    {value: "yandex", label: "yandex"},
-                    {value: "mytarget", label: "mytarget"},
-                    {value: "linkedin", label: "linkedin"},
-                    {value: "mindbox", label: "mindbox"},
-                    {value: "ok.ru", label: "ok.ru"}				
+                    {value: "HR", label: "HR"},
+                    {value: "Product", label: "Продуктовые рассылки"},
+                    {value: "Digest", label: "Дайджест"},
+                    {value: "Events", label: "Мероприятия"},
+                    {value: "Promo", label: "Promo"},
+                    {value: "DOI", label: "DOI"},
+                    {value: "Blog", label: "Блог"},				
                   ],
-            medium: [
-                        {value:"email", label:"email"}, 
-                        {value:"content", label:"content"}, 
-                        {value:"social", label:"social"},
-                        {value:"referral", label:"referral"}, 
-                        {value:"innerreferral", label:"innerreferral"}, 
-                        {value:"banner", label:"banner"},
-                        {value:"cpc", label:"cpc"},
-                        {value:"display", label:"display"},
-                        {value:"sproject", label:"sproject"},
-                        {value:"pr", label:"pr"}, 
-                    ],
     
         }
         return options
