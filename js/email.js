@@ -17,7 +17,6 @@ $(document).ready(function(){
                 select.append('<option value="'+ data[i].value +'">'+ data[i].label + '</option>')
                 }
         }
-    
 
         // For showing checkboxes in the multiple list
        
