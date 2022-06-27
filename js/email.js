@@ -5,6 +5,7 @@ $(document).ready(function(){
         // select lists from the lists below
         populate_select($('#product'), options.product);
         populate_select($('#source'), options.source);
+        populate_select($('#different'), options.different);
         $('button#generate').click(function(){
             generate_code();
         })
@@ -54,7 +55,7 @@ $(document).ready(function(){
         function check_date(campaign){
             if (campaign.search(/\d/) == -1)
             {
-                $('div#errormsg').html("💩 добавьте дату в название компании!!! 💩");
+                $('div#errormsg').html("💩 добавьте дату!!! 💩");
                 $('div#error').fadeIn();
                 console.log("miss date");
                 return 0;
@@ -76,33 +77,39 @@ $(document).ready(function(){
             let link_text ="";
             
             let source = $('select#source').val();
-            let source1 = $('input#source1').val();
+            let different = $('select#different').val();
+            
             console.log(source)
-            console.log(source1)
             if (source != "")
                 url += source;
             else if (source1 != "")
                 url += source1;
             
-
-
             var spisok = $('select#product').val();
-
-            if ($('select#product').val() != ""){
+            check_date($('input#term').val());
+            if ($('select#product').val() != null){
                 spisok.forEach(function(item, i) {
                     link_text += item + "_";
                   });
-                check_date($('input#term').val());
                 link_text = link_text.slice(0, -1);
-                link_text += '/' + $('input#term').val();
+                //link_text += '/' + $('input#term').val();
             }
             else
-                link_text = $('input#term').val();
+              link_text = ""
+            // else
+            //     link_text = $('input#term').val();
             
-            if (link_text == "")
-                console.log("no campaign");
-            else {
-                url = url + "/" + link_text;
+            if (link_text == "" && $('input#term').val() != "")
+            {
+                if (different != "")
+                    url += "_" + different + "_" + $('input#term').val();
+                else
+                    url += "_" + $('input#term').val();
+                console.log("no selected products");
+            }
+            else if (link_text != "")    
+            {
+                url = url + "/" + link_text + "/" + $('input#term').val();
             }
         
             if ($('input#url').val() != ""){
@@ -171,7 +178,11 @@ $(document).ready(function(){
                     {value: "DOI", label: "DOI"},
                     {value: "Blog", label: "Блог"},				
                   ],
-    
+            different: [
+                {value:"Followup", label:"Фоллуап"},
+                {value:"Invitation", label:"Приглашение"},
+                {value:"Reminder", label:"Напоминание"},
+            ],
         }
         return options
     }
