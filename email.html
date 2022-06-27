@@ -6,20 +6,27 @@
 <h1 align = "center">🧐 UTM generator 🧐</h1>
 
 <div id="generator">	
-	<div class="field">
+
+	<div class="field" id ="campaign">
 		<label for="source">utm_campaign</label>
 		<select id="source" name="source"></select>
-		<input id="source1" name="source1" style = "margin-left: 5px;"></input>
 	</div>
-	<div class="field">
+	<div class="field" id="prod">
 		<label for="term">Products</label>
-		<select id="product" name="product" multiple size = 15></select>
+		<select id="product" name="product" multiple size = 15 style="font-size: 0.7em"></select>
 		<input id="term" name="term" style = "text-align: left; margin-left: 5px;" placeholder="Дата"></input>
 	</div>
-
-	<div class="actions">
-		<button id="generate">Generate Link</button>
+	<div class="field">
+		<label for="differentlabel">Разное</label>
+		<select id="different" name="different"></select>
 	</div>
+	<div id="error" style = "margin-bottom: 10px;">
+		<div id="errormsg"></div>
+		</div>
+	
+		<div class="actions">
+			<button id="generate">Generate Link</button>
+		</div>
 </div>
 <div id="generated">
 	<div id="code" style ="display:inline-block;"></div>
