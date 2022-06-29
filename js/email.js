@@ -175,7 +175,8 @@ $(document).ready(function(){
                     {value: "Events", label: "Мероприятия"},
                     {value: "Promo", label: "Promo"},
                     {value: "DOI", label: "DOI"},
-                    {value: "Blog", label: "Блог"},				
+                    {value: "Blog", label: "Блог"},
+                    {value: "Welcome", label: "Welcome"},
                   ],
             different: [
                 {value:"Followup", label:"Фоллуап"},
