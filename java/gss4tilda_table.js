@@ -91,7 +91,7 @@ function gss4tilda_createT431 (blockID, data)
 	$('#rec' + blockID + " table").html("");
 	
 	//вызываем функцию формирования для таблицы	
-	t431_createTable(blockID, part1, part2, styles['rec'+blockID].per, styles['rec'+blockID].w, styles['rec'+blockID].t431__btnstyles, styles['rec'+blockID].t431__tdstyles, styles['rec'+blockID].t431__thstyles, styles['rec'+blockID].t431__oddrowstyles, styles['rec'+blockID].t431__evenrowstyles);
+	t431_createTable(blockID, part1, part2, styles['#rec'+blockID].per, styles['#rec'+blockID].w, styles['#rec'+blockID].t431__btnstyles, styles['#rec'+blockID].t431__tdstyles, styles['#rec'+blockID].t431__thstyles, styles['#rec'+blockID].t431__oddrowstyles, styles['#rec'+blockID].t431__evenrowstyles);
 
 	//подгоняем ширину столбцов
 	if('' && $('#rec'+ blockID +' .t431 .t-container .t431__data-part2').html().length>0) {
