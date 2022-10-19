@@ -177,6 +177,7 @@ $(document).ready(function(){
                     {value: "DOI", label: "DOI"},
                     {value: "Blog", label: "Блог"},
                     {value: "Welcome", label: "Welcome"},
+                    {value: "Sales", label: "Sales"},
                   ],
             different: [
                 {value:"Followup", label:"Фоллуап"},
