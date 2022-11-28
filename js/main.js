@@ -189,6 +189,7 @@ function get_options(){
 				{value: "dbaas", label: "dbaas"},
 				{value: "kubernetes", label: "kubernetes"},
 				{value: "craas", label: "craas"},
+				{value: "managed_services", label: "managed_services"},
 				{value: "file_storage", label: "file_storage"},
 				{value: "vmware", label: "vmware"},
 				{value: "draas", label: "draas"},
