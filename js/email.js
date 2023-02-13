@@ -178,6 +178,7 @@ $(document).ready(function(){
                     {value: "Blog", label: "Блог"},
                     {value: "Welcome", label: "Welcome"},
                     {value: "Sales", label: "Sales"},
+                    {value: "Lifecycle", label: "Lifecycle"},
                   ],
             different: [
                 {value:"Followup", label:"Фоллуап"},
