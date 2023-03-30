@@ -197,7 +197,8 @@ function get_options(){
 				{value: "security", label: "security"},
 				{value: "1c", label: "1c"},
 				{value: "lbaas", label: "lbaas"},
-				{value: "subscribe", label: "subscribe"}
+				{value: "subscribe", label: "subscribe"},
+				{value: "ml", label: "ml"}
 		],
 		source:  [
 				{value: "vk.com", label: "vk.com"},
