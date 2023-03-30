@@ -190,6 +190,7 @@ function get_options(){
 				{value: "kubernetes", label: "kubernetes"},
 				{value: "craas", label: "craas"},
 				{value: "managed_services", label: "managed_services"},
+			        {value: "ml", label: "ml"},
 				{value: "file_storage", label: "file_storage"},
 				{value: "vmware", label: "vmware"},
 				{value: "draas", label: "draas"},
@@ -197,8 +198,7 @@ function get_options(){
 				{value: "security", label: "security"},
 				{value: "1c", label: "1c"},
 				{value: "lbaas", label: "lbaas"},
-				{value: "subscribe", label: "subscribe"},
-				{value: "ml", label: "ml"}
+				{value: "subscribe", label: "subscribe"}
 		],
 		source:  [
 				{value: "vk.com", label: "vk.com"},
