@@ -1,6 +1,6 @@
 div#generator{float:left; width: 100%; margin-bottom:20px; font-size: 1.2em}
-	
-	div.field{float:left; margin-bottom:10px; width:100%;}
+    div.block{display: flex; align-items: center;float:left;margin-left: 30px;}
+	div.field{display: flex; align-items: center;float:left; margin-bottom:10px; width:100%;}
 		div.field label{float:left; margin-right:15px; width:30%; text-align: right; margin-top:3px;}
 		div.field input{float:left; font-size: 0.8em; width:22%;}
 		div.field select{float:left; font-size: 0.9em; width: 15%; margin-top: 1.5px;}
@@ -11,6 +11,18 @@ div#generator{float:left; width: 100%; margin-bottom:20px; font-size: 1.2em}
     div#error{float:left; margin-left:31%; width:33%; background-color: #F7BAC8; border: thin solid #ccc; border-radius:6px; padding:1% 2%; display: none}
 body {
     font-family: 'open sans', 'helvetica neue', helvetica, arial, sans-serif;
+}
+.color-picker-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#selected-color {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
 }
 .colortext {
      color: #eb4247; /* Красный цвет выделения */
