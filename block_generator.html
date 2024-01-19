@@ -1,0 +1,45 @@
+<script src="js/lib.js"></script>
+<script src="js/block_generator.js"></script>
+<script src="js/blocks.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
+<h1 align = "center">🧐 BLOCKS generator 🧐</h1>
+<div id="generator">	    
+
+	<div class="field" id ="check">
+		<!-- <label for="source">Выбери необходимое:</label> -->
+        <label for="Products" style="margin-right:0px;">Продукты</label>
+        <input type="checkbox" id="products" name="Products" style="width:4%; margin-right:10px;margin-top: 5px;"></input>
+
+        <label for="Articles" style="margin-left:20px; width:5%; text-align: left;">Статьи</label>
+        <input type="checkbox" id="articles" name="Articles" style="width:5%;margin-top: 5px;"></input>
+
+	</div>
+	<div class="field" id="prod">
+		<label for="product">Список</label>
+		<select id="product" name="product" multiple size = 7 style="font-size: 0.7em"></select>
+        <div class="block">
+            <label for="otstyp">Отступ</label>
+            <input type = "text" id="otstyp" name="otstyp" style="font-size: 0.7em; width: 20%;margin-top: 5px;" value="30"></input>
+        </div>
+	</div>
+	<div class="field">
+        <label for="color-picker">Цвет рамок</label>
+        <input type="color" id="color-picker">
+	</div>
+    <!-- Окно предпросмотра внутри HTML с использованием iframe -->
+    <!-- <iframe id="preview" src="email.html" frameborder="0"></iframe> -->
+
+	<div id="error" style = "margin-bottom: 10px;">
+		<div id="errormsg"></div>
+		</div>
+	
+		<div class="actions">
+			<button id="generate">Generate Code</button>
+		</div>
+</div>
+<div id="generated">
+	<div id="code" style ="display:inline-block;"></div>
+	<button id="copytext" style ="display:inline-block;">Copy link </button>
+	<div id="succes_copy" style = "float:right; margin-right: 5px; margin-top: 0.5px; font-size: 1.1em;"></div>
+</div>
