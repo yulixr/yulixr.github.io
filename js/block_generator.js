@@ -45,14 +45,14 @@ $(document).ready(function(){
             $('div#succes_copy').html("");
         })
         
-        function base_prod_block(otstyp,color){
-            return blocks.else + blocks.start.replace("REP", otstyp) + blocks.DBaaS.split("#0e0d0d").join(color)+ blocks.probel + blocks.DBaaS.split("#0e0d0d").join(color) + blocks.probel + blocks.DBaaS.split("#0e0d0d").join(color)+ blocks.end;
+        function base_prod_block(otstyp, color, color1){
+            return blocks.else + blocks.start.replace("REP", otstyp).split("ROPP").join(color1) + blocks.Dedicated.split("#0e0d0d").join(color)+ blocks.probel + blocks.Storage.split("#0e0d0d").join(color) + blocks.probel + blocks.Cloud.split("#0e0d0d").join(color)+ blocks.end;
         }
-        function base_article_block(otstyp,color){
-            return blocks.else + blocks.start.replace("REP", otstyp) + blocks.Articles_DBaaS.split("#0e0d0d").join(color)+ blocks.probel + blocks.Articles_DBaaS.split("#0e0d0d").join(color) + blocks.probel + blocks.Articles_DBaaS.split("#0e0d0d").join(color)+ blocks.end;
+        function base_article_block(otstyp, color, color1){
+            return blocks.else + blocks.start.replace("REP", otstyp).split("ROPP").join(color1) + blocks.Articles_Base1.split("#0e0d0d").join(color)+ blocks.probel + blocks.Articles_Base2.split("#0e0d0d").join(color) + blocks.probel + blocks.Articles_Base3.split("#0e0d0d").join(color)+ blocks.end;
         }
 
-        function get_code(base, spisok, options, color, otstyp){
+        function get_code(base, spisok, options, color, otstyp, color1){
             if (base == "article") {seg = "Articles"; match = options.articles;match1=""}
             else if (base == "product") {seg = "Products"; match = options.products;match1=""}
             else { seg="Articles"; match = options.products; match1 = options.articles}
@@ -62,19 +62,21 @@ $(document).ready(function(){
             spisok.forEach(function(item, i) {
                 if (i == 0) code = blocks.ifcondition.replace("place", seg+item);
                 else if (i != 0 && i != len) code += blocks.elseifcondition.replace("place", seg+item);
-                code += blocks.start.replace("REP", otstyp);
+                code += blocks.start.replace("REP", otstyp).split("ROPP").join(color1);
                 if (match1){
                     let matchingSource = match.find(sourceItem => sourceItem.label === item);
                     let matchingSource1 = match1.find(sourceItem => sourceItem.label === item);
-                    stat = matchingSource1.value[Math.floor(Math.random() * 2)];
+                    stat = matchingSource1.value[1];
                     console.log(stat)
                     k = 0;
                     if (matchingSource && stat) {
                         matchingSource.value.forEach(value => {
-                            if (k == 1) {console.log("ffff" + k);
-                                code += blocks[stat].split("#0e0d0d").join(color);code += blocks.probel;}
+                            if (k == 1) {
+                                code += blocks[stat].split("#0e0d0d").join(color);
+                                code += blocks.probel;
+                            }
                             else {
-                                console.log("fsafsdaf" + k + " " + value);    
+                                // console.log("fsafsdaf" + k + " " + value);    
                                 code += blocks[value].split("#0e0d0d").join(color);
                                 if (k!= 2) code += blocks.probel;
                             }
@@ -96,8 +98,8 @@ $(document).ready(function(){
                 code += blocks.end;
                 i++;
             });
-            if (base == "product") code += base_prod_block(otstyp,color);
-            else code += base_article_block(otstyp,color);
+            if (base == "product") code += base_prod_block(otstyp,color, color1);
+            else code += base_article_block(otstyp,color, color1);
             return code;
         }
         
@@ -106,6 +108,7 @@ $(document).ready(function(){
             let link_text ="";
             
             let color = $('#color-picker').val();
+            let color1 = $('#text-picker').val();
             let otstyp = $('#otstyp').val();
             let article = $('#articles').is(':checked');
             let product = $('#products').is(':checked');
@@ -114,14 +117,14 @@ $(document).ready(function(){
             console.log(spisok)
             if (spisok != null){
                 if (product && !article){
-                    link_text = get_code("product", spisok, options, color, otstyp);
+                    link_text = get_code("product", spisok, options, color, otstyp, color1);
                 }
                 else if(article && !product)
                 {
-                    link_text = get_code("article", spisok, options, color, otstyp);
+                    link_text = get_code("article", spisok, options, color, otstyp, color1);
                 }
                 else if(article && product){
-                    link_text = get_code("2", spisok, options, color, otstyp);
+                    link_text = get_code("2", spisok, options, color, otstyp, color1);
                 }
             }
             else
@@ -156,28 +159,28 @@ $(document).ready(function(){
                     {value: "Dedicated", label: "Dedicated"},
             ],
             article: [
-                {value: "Dedicated", label: "Dedicated"},
                 {value: "DBaaS", label: "DBaaS"},
-                {value: "Cloud", label: "Cloud"},
+                {value: "Colocation", label: "Colocation"}, 
+                {value: "CDN", label: "CDN"}, 
                 {value: "Storage", label: "Storage"},
-                {value: "Network", label: "Network"},
-                {value: "CDN", label: "CDN"},
-                {value: "Colocation", label: "Colocation"},                    
+                {value: "Cloud", label: "Cloud"},
+                {value: "Dedicated", label: "Dedicated"},
+                                  
             ],
             products:  [
-                {value: ["DBaaS", "DBaaS", "DBaaS"], label: "Dedicated"},
-                {value: ["DBaaS", "DBaaS", "DBaaS"], label: "DBaaS"},
-                {value: ["DBaaS", "DBaaS", "DBaaS"], label: "Cloud"},
-                {value: ["DBaaS", "DBaaS", "DBaaS"], label: "Storage"},   
+                {value: ["Cloud", "Storage", "Router"], label: "Dedicated"},
+                {value: ["Dedicated", "Storage", "Kuber"], label: "DBaaS"},
+                {value: ["Dedicated", "Cloud", "Firewall"], label: "Cloud"},
+                {value: ["Dedicated", "Cloud", "CDN"], label: "Storage"},   
                 ],
             articles:  [
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "Dedicated"},
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "DBaaS"},
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "Cloud"},
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "Storage"},
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "Network"},
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "CDN"},
-                {value: ["Articles_DBaaS", "Articles_DBaaS", "Articles_DBaaS"], label: "Colocation"},    
+                {value: ["Articles_Dedicated1", "Articles_Dedicated2", "Articles_Dedicated3"], label: "Dedicated"},
+                {value: ["Articles_DBaaS1", "Articles_DBaaS2", "Articles_DBaaS3"], label: "DBaaS"},
+                {value: ["Articles_Cloud1", "Articles_Cloud2", "Articles_Cloud3"], label: "Cloud"},
+                {value: ["Articles_Storage1", "Articles_Storage2", "Articles_Storage3"], label: "Storage"},
+                {value: ["Articles_Network1", "Articles_Network2", "Articles_Network3"], label: "Network"},
+                {value: ["Articles_CDN1", "Articles_CDN2", "Articles_CDN3"], label: "CDN"},
+                {value: ["Articles_Colocation1", "Articles_Colocation2", "Articles_Colocation3"], label: "Colocation"},    
                 ],
         }
         return options
