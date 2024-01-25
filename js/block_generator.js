@@ -100,6 +100,7 @@ $(document).ready(function(){
             });
             if (base == "product") code += base_prod_block(otstyp,color, color1);
             else code += base_article_block(otstyp,color, color1);
+            code += "@{end if}";
             return code;
         }
         
