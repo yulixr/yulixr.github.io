@@ -54,7 +54,7 @@ $(document).ready(function(){
 
         function get_code(base, spisok, options, color, otstyp, color1){
             if (base == "article") {seg = "Articles"; match = options.articles;match1=""}
-            else if (base == "product") {seg = "Products"; match = options.products;match1=""}
+            else if (base == "product") {seg = "Product"; match = options.products;match1=""}
             else { seg="Articles"; match = options.products; match1 = options.articles}
             code = ""
             i = 0;
